@@ -90,11 +90,14 @@ element.innerHTML = userProvidedName;
 ### Good Form Validation
 ```javascript
 function validateEmail(email) {
+    // Use HTML5 input type="email" for client-side validation when possible
+    // For manual validation, use a basic pattern or rely on server-side validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
-// Before submitting
+// Before submitting, provide basic validation
+// Note: Complex email validation should be done on the server side
 if (!validateEmail(emailInput.value)) {
     showError('Please enter a valid email address');
     return;
