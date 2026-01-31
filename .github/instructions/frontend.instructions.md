@@ -21,7 +21,10 @@ These instructions apply to all frontend code including HTML, CSS, and JavaScrip
 - Handle HTTP error responses appropriately
 - Show loading indicators during API calls
 - Display meaningful error messages to users
-- Store authentication tokens/sessions securely (localStorage or sessionStorage)
+- Store authentication tokens/sessions carefully:
+  - Prefer HttpOnly cookies for sensitive tokens (immune to XSS)
+  - If using localStorage/sessionStorage, be aware of XSS vulnerabilities
+  - Never store sensitive data without proper XSS protections
 
 ### DOM Manipulation
 - Cache DOM element references when used multiple times
@@ -42,7 +45,10 @@ These instructions apply to all frontend code including HTML, CSS, and JavaScrip
 - Prevent XSS attacks by avoiding `innerHTML` with user-generated content
 - Use `textContent` or create elements programmatically for user data
 - Validate all data received from the API
-- Don't store sensitive data in localStorage/sessionStorage
+- Be cautious with localStorage/sessionStorage:
+  - These are vulnerable to XSS attacks
+  - Never store highly sensitive data (passwords, tokens) without proper protections
+  - Consider HttpOnly cookies for authentication tokens instead
 
 ### CSS Styling
 - Use meaningful class names that describe purpose, not appearance
