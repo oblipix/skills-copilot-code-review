@@ -97,7 +97,7 @@ def get_activity(activity_name: str) -> Dict[str, Any]:
 @router.get("/", response_model=List[Activity])
 def list_activities(
     day: Optional[str] = Query(None, description="Filter by day (e.g., 'Monday')"),
-    min_slots: int = Query(0, ge=0, description="Minimum available slots (capacity - enrolled)"),
+    min_slots: int = Query(0, ge=0, description="Minimum available slots required (filters activities with at least this many open spots)"),
     include_full: bool = Query(True, description="Include activities at full capacity")
 ) -> List[Activity]:
     """List all activities with optional filtering"""
